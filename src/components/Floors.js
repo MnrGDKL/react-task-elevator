@@ -35,7 +35,7 @@ const Floors = ({floorQue}) => {
     }
     else {
       let setQue = new Set(newQue);
-      newQue = [...setQue].filter(que => (que !== elevator ? que : null));
+      newQue = [...setQue];
     }
     setQue(newQue);
     floorQue(newQue);
