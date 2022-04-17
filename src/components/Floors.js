@@ -35,6 +35,7 @@ const Floors = ({floorQue}) => {
     }
     else {
       let setQue = new Set(newQue);
+      console.log(setQue, newQue);
       newQue = [...setQue];
     }
     setQue(newQue);
