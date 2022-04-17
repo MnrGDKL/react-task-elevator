@@ -22,22 +22,23 @@ const Floors = ({floorQue}) => {
     }
   }
 
-  const GoToFloors = () => {
-    if (elevator === floors.length - 1) {
-      newQue.sort((a, b) => b - a);
-      let setQue = new Set(newQue);
-      newQue = [...setQue].filter(que => (que !== elevator ? que : null));
-    } 
-    else if (elevator === 0) {
+  const ButtonPushQue = (floor) => {
+    if (!newQue.includes(floor) && floor !== elevator) {
+      newQue.push(floor)
       newQue.sort((a, b) => a - b);
-      let setQue = new Set(newQue);
-      newQue = [...setQue].filter(que => (que !== elevator ? que : null));
     }
-    else {
-      let setQue = new Set(newQue);
-      console.log(setQue, newQue);
-      newQue = [...setQue];
+    console.log("Que:", newQue);
+  }
+
+  const GoToFloors = () => {
+    if (elevator >= Math.max(...newQue)) {
+      newQue.sort((a, b) => b - a);
+
+    } 
+    else if (elevator <= Math.max(...newQue)) {
+      newQue.sort((a, b) => a - b);
     }
+    console.log("newQue:", newQue);
     setQue(newQue);
     floorQue(newQue);
   }
@@ -63,7 +64,11 @@ const Floors = ({floorQue}) => {
               <div className='main-buttons-div'>
                 <div className='floor-buttons-div'>
                   {floors.map(floor => 
-                    <button className={`floor ${floor}`} key={floor} onClick={()=>newQue.push(floor)}>{floor}</button>)}
+                    <button className={`floor ${que.includes(floor) ? "selected" : ""}`} 
+                            key={floor} 
+                            onClick={()=> ButtonPushQue(floor)}>
+                      {floor}
+                    </button>)}
                 </div>
                 <div>
                   <button className='go-button' 
