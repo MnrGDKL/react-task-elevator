@@ -6,9 +6,9 @@ const App = () => {
   const [floorQue, setFloorQue] = React.useState([]);
   return (
     <div>
-      <h1>Elevator Sequence: {floorQue.length !== 0 
+      <h2>Elevator Sequence: {floorQue.length !== 0 
                               ? floorQue.map(floor=> floor).join(' - ')
-                              : "-"}</h1>
+                              : "-"}</h2>
       <Floors floorQue={setFloorQue}/>
     </div>
   )

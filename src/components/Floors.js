@@ -26,16 +26,16 @@ const Floors = ({floorQue}) => {
     if (elevator === floors.length - 1) {
       newQue.sort((a, b) => b - a);
       let setQue = new Set(newQue);
-      newQue = [...setQue];
+      newQue = [...setQue].filter(que => (que !== elevator ? que : null));
     } 
     else if (elevator === 0) {
       newQue.sort((a, b) => a - b);
       let setQue = new Set(newQue);
-      newQue = [...setQue];
+      newQue = [...setQue].filter(que => (que !== elevator ? que : null));
     }
     else {
       let setQue = new Set(newQue);
-      newQue = [...setQue];
+      newQue = [...setQue].filter(que => (que !== elevator ? que : null));
     }
     setQue(newQue);
     floorQue(newQue);
